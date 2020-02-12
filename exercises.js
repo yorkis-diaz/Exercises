@@ -65,3 +65,89 @@ const flipAndInvertImage = function (A) {
 // [[1, 0, 0], [0, 1, 0], [1, 1, 1]]
 // console.log(flipAndInvertImage([[1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 1, 0]]))
 // [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 1], [1, 0, 1, 0]]
+
+
+//-----------------------------------------------
+//A self - dividing number is a number that is divisible by every digit it contains.
+//For example, 128 is a self - dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+//Also, a self - dividing number is not allowed to contain the digit zero.
+//Given a lower and upper number bound, output a list of every possible self dividing 
+//number, including the bounds if possible.
+
+//V1
+const selfDividingNumbers = function (left, right) {
+    const nums = [];
+    let selfDiving = false
+    for(let i = left; i <= right; i++) {
+        const arr = String(i).split("");
+        for(num of arr) {
+            const int = parseInt(num);
+            if (int === 0) {
+                selfDiving = false; 
+                break;
+            } else if (i % int !== 0) {
+                selfDiving = false;
+                break;
+            } else if (i % int === 0) {
+                selfDiving = true
+            }
+        }
+        if (selfDiving === true) {
+            nums.push(i)
+            selfDiving = false
+        }
+
+    }
+    return nums
+};
+
+//V2
+const selfDividingNumbersV2 = function (left, right) {
+    const nums = [];
+    for (let i = left; i <= right; i++) {
+        const arr = String(i).split("");
+        const found = arr.every(num => {
+            return (parseInt(num) > 0 && (i % parseInt(num) === 0))
+        })
+
+        if (found) {
+            nums.push(i)
+        }
+
+    }
+    return nums
+};
+
+const selfDividingNumbersRecursive = function (left, right, arr = []) {
+    if (right < left) return arr
+    const nums = String(right).split("").every(num => {
+        return (parseInt(num) > 0 && (right % parseInt(num) === 0))
+    })
+    if (nums) {
+        arr.unshift(right)
+        return selfDividingNumbersRecursive(left, (right - 1), arr)
+    } else {
+        return selfDividingNumbersRecursive(left, (right-1), arr)
+    }
+};
+
+// console.log(selfDividingNumbers(left = 1, right = 22))
+// console.log(selfDividingNumbersV2(left = 1, right = 22))
+// console.log(selfDividingNumbersRecursive(left = 1, right = 22))
+
+//We define the Perfect Number is a positive integer that is equal to the sum of all its positive divisors except itself.
+
+//Now, given an integer n, write a function that returns true when it is a perfect number and false when it is not.
+
+const checkPerfectNumber = function (num) {
+    let sum = 0
+    for(let i = 1; i < num; i++) {
+        if (num % i === 0) {
+            sum += i
+        }
+    }
+    return (sum === num)
+};
+
+// console.log(checkPerfectNumber(28))
+//True
