@@ -151,3 +151,95 @@ const checkPerfectNumber = function (num) {
 
 // console.log(checkPerfectNumber(28))
 //True
+
+
+/////////// NYC Talent problems
+
+
+for (x of operations) {
+    let op = x.split(" ")
+    switch (op[0]) {
+        case "push":
+            stack.push(parseInt(op[1]));
+            break;
+        case "pop":
+            stack.pop();
+            break;
+        case "inc":
+            let v = parseInt(op[2])
+            let i = parseInt(op[1])
+            for (let idx = 0; idx < i; idx++) {
+                stack[idx] += v
+            }
+            break;
+        default:
+            break;
+    }
+    let last = stack.length - 1
+    console.log((stack.length === 0) ? "EMPTY" : stack[last]);
+}
+
+operations.forEach(operation => {
+    if (operation.startsWith("push")) {
+        stack.push(parseInt(operation.split(" ")[1]))
+    } else if (operation.startsWith("pop")) {
+        stack.pop()
+    } else if (operation.startsWith("inc")) {
+        let v = parseInt(operation.split(" ")[2])
+        let i = parseInt(operation.split(" ")[1])
+        for (let idx = 0; idx < i; idx++) {
+            stack[idx] += v
+        }
+    }
+    let last = stack.length - 1
+    // console.log((last < 0) ? "EMPTY" : stack[last]);
+})  
+
+
+for (let x of operations) {
+    if (!x.startsWith("push") && !x.startsWith("pop") && !x.startsWith("inc")) return;
+    let op = x.split(" ")
+    if (op[0] === "push") {
+        stack.push(parseInt(op[1]))
+    } else if (op[0] === "pop") {
+        stack.pop()
+    } else if (op[0] === "inc") {
+        let v = parseInt(op[2])
+        let i = parseInt(op[1])
+        for (let idx = 0; idx < i; idx++) {
+            stack[idx] += v
+        }
+    }
+    let last = stack.length - 1
+    console.log((last < 0) ? "EMPTY" : stack[last]);
+}
+
+
+////////////////////////////////////////////
+function getMin(s) {
+    // Write your code here
+    const pairs = {
+        "(": ")",
+        ")": "("
+    }
+    const stack = []
+    let count = 0
+    let arr = s.split("")
+
+    for (let i = 0; i < arr.length; i++) {
+        const ele = arr[i]
+        if (ele === "(" && i === arr.length - 1) {
+            count++
+        } else if (ele === "(") {
+            stack.push(arr[i])
+        } else if (ele === ")") {
+            const last = stack.pop()
+            if (pairs[last] !== ele) {
+                count++
+                stack.push(last)
+            }
+        }
+    }
+    return count
+
+}
