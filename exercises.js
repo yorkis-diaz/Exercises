@@ -153,93 +153,141 @@ const checkPerfectNumber = function (num) {
 //True
 
 
-/////////// NYC Talent problems
+// /////////// NYC Talent problems
 
 
-for (x of operations) {
-    let op = x.split(" ")
-    switch (op[0]) {
-        case "push":
-            stack.push(parseInt(op[1]));
-            break;
-        case "pop":
-            stack.pop();
-            break;
-        case "inc":
-            let v = parseInt(op[2])
-            let i = parseInt(op[1])
-            for (let idx = 0; idx < i; idx++) {
-                stack[idx] += v
-            }
-            break;
-        default:
-            break;
-    }
-    let last = stack.length - 1
-    console.log((stack.length === 0) ? "EMPTY" : stack[last]);
-}
+// for (x of operations) {
+//     let op = x.split(" ")
+//     switch (op[0]) {
+//         case "push":
+//             stack.push(parseInt(op[1]));
+//             break;
+//         case "pop":
+//             stack.pop();
+//             break;
+//         case "inc":
+//             let v = parseInt(op[2])
+//             let i = parseInt(op[1])
+//             for (let idx = 0; idx < i; idx++) {
+//                 stack[idx] += v
+//             }
+//             break;
+//         default:
+//             break;
+//     }
+//     let last = stack.length - 1
+//     console.log((stack.length === 0) ? "EMPTY" : stack[last]);
+// }
 
-operations.forEach(operation => {
-    if (operation.startsWith("push")) {
-        stack.push(parseInt(operation.split(" ")[1]))
-    } else if (operation.startsWith("pop")) {
-        stack.pop()
-    } else if (operation.startsWith("inc")) {
-        let v = parseInt(operation.split(" ")[2])
-        let i = parseInt(operation.split(" ")[1])
-        for (let idx = 0; idx < i; idx++) {
-            stack[idx] += v
-        }
-    }
-    let last = stack.length - 1
-    // console.log((last < 0) ? "EMPTY" : stack[last]);
-})  
-
-
-for (let x of operations) {
-    if (!x.startsWith("push") && !x.startsWith("pop") && !x.startsWith("inc")) return;
-    let op = x.split(" ")
-    if (op[0] === "push") {
-        stack.push(parseInt(op[1]))
-    } else if (op[0] === "pop") {
-        stack.pop()
-    } else if (op[0] === "inc") {
-        let v = parseInt(op[2])
-        let i = parseInt(op[1])
-        for (let idx = 0; idx < i; idx++) {
-            stack[idx] += v
-        }
-    }
-    let last = stack.length - 1
-    console.log((last < 0) ? "EMPTY" : stack[last]);
-}
+// operations.forEach(operation => {
+//     if (operation.startsWith("push")) {
+//         stack.push(parseInt(operation.split(" ")[1]))
+//     } else if (operation.startsWith("pop")) {
+//         stack.pop()
+//     } else if (operation.startsWith("inc")) {
+//         let v = parseInt(operation.split(" ")[2])
+//         let i = parseInt(operation.split(" ")[1])
+//         for (let idx = 0; idx < i; idx++) {
+//             stack[idx] += v
+//         }
+//     }
+//     let last = stack.length - 1
+//     // console.log((last < 0) ? "EMPTY" : stack[last]);
+// })  
 
 
-////////////////////////////////////////////
-function getMin(s) {
+// for (let x of operations) {
+//     if (!x.startsWith("push") && !x.startsWith("pop") && !x.startsWith("inc")) return;
+//     let op = x.split(" ")
+//     if (op[0] === "push") {
+//         stack.push(parseInt(op[1]))
+//     } else if (op[0] === "pop") {
+//         stack.pop()
+//     } else if (op[0] === "inc") {
+//         let v = parseInt(op[2])
+//         let i = parseInt(op[1])
+//         for (let idx = 0; idx < i; idx++) {
+//             stack[idx] += v
+//         }
+//     }
+//     let last = stack.length - 1
+//     console.log((last < 0) ? "EMPTY" : stack[last]);
+// }
+
+
+// ////////////////////////////////////////////
+// function getMin(s) {
+//     // Write your code here
+//     const pairs = {
+//         "(": ")",
+//         ")": "("
+//     }
+//     const stack = []
+//     let count = 0
+//     let arr = s.split("")
+
+//     for (let i = 0; i < arr.length; i++) {
+//         const ele = arr[i]
+//         if (ele === "(" && i === arr.length - 1) {
+//             count++
+//         } else if (ele === "(") {
+//             stack.push(arr[i])
+//         } else if (ele === ")") {
+//             const last = stack.pop()
+//             if (pairs[last] !== ele) {
+//                 count++
+//                 stack.push(last)
+//             }
+//         }
+//     }
+//     return count
+
+// }
+
+
+function countPairs(numbers, k) {
     // Write your code here
-    const pairs = {
-        "(": ")",
-        ")": "("
-    }
-    const stack = []
     let count = 0
-    let arr = s.split("")
+    const pairs = {}
 
-    for (let i = 0; i < arr.length; i++) {
-        const ele = arr[i]
-        if (ele === "(" && i === arr.length - 1) {
-            count++
-        } else if (ele === "(") {
-            stack.push(arr[i])
-        } else if (ele === ")") {
-            const last = stack.pop()
-            if (pairs[last] !== ele) {
-                count++
-                stack.push(last)
+    for (let i = 0; i < numbers.length - 1; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            const pair = [numbers[i], numbers[j]]
+            // // console.log(pair)
+            // if (!pairs[pair]) pairs[pair] = 0
+            if (pair[0] + k === pair[1] && !pairs[pair]) {
+                pairs[pair] = 0
+                count += 1
             }
         }
     }
-    return count
-
+    return pairs
 }
+
+// console.log(countPairs([1,2,3,4,5,6], 2))
+
+
+/////////
+
+
+var replaceElements = function (arr) {
+    const newArr = []
+    let greatest = 0
+    for (let i = 0; i < arr.length; ++i) {
+        if (i === arr.length - 1) {
+            newArr.push(-1)
+            break;
+        }
+
+        for (let j = i + 1; j < arr.length; ++j) {
+            if (arr[j] > greatest) {
+                greatest = arr[j]
+            }
+        }
+        newArr.push(greatest)
+        greatest = 0
+    };
+    return newArr;
+};
+
+replaceElements([17, 18, 5, 4, 6, 1])
