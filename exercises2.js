@@ -26,3 +26,17 @@ var deleteDuplicates = function (head) {
 
     return head
 };
+
+//numberofsteps
+
+var numberOfSteps = function (num) {
+    for (let i = 0; num >= 0; i++) {
+        if (num === 0) {
+            return i
+        } else if (num % 2 === 0) {
+            num = num / 2
+        } else if (num % 2 !== 0) {
+            num = num - 1
+        }
+    }
+};
