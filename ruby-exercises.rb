@@ -12,3 +12,37 @@ def my_bsearch(arr, target)
         sub_num + (arr[0...middle].length + 1) unless sub_num.nil?
     end
 end
+
+
+class Array
+
+    def merge_sort(&prc)
+        return self if self.length <= 1
+
+        prc ||= Proc.new {|ele1, ele2| ele1 <=> ele2}
+        middle = (self.length / 2)
+
+        left = self.take(middle)
+        right = self.drop(middle)
+
+        sorted_left = left.merge_sort(&prc)
+        sorted_right = right.merge_sort(&prc)
+
+        Array.merge(sorted_left, sorted_right, &prc)
+    end
+
+ #   private
+    def self.merge(left, right, &prc)
+        merged_array = []
+
+        until left.empty? || right.empty?
+            if prc.call(left.first, right.first) == -1
+                merged_array << left.shift
+            else
+                merged_array << right.shift
+            end
+        end
+
+        merged_array + left + right
+    end
+end
