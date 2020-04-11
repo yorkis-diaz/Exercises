@@ -40,3 +40,21 @@ var numberOfSteps = function (num) {
         }
     }
 };
+
+//balancedString
+
+var balancedStringSplit = function (s) {
+    let balanced = 0
+    let r = 0
+    for (let i = 0; i < s.length; ++i) {
+        if (s[i] === "R") {
+            r++
+        } else {
+            r--
+        }
+        if (r === 0) {
+            balanced++
+        }
+    }
+    return balanced
+};
