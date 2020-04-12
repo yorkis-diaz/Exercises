@@ -77,3 +77,19 @@ var distributeCandies = function (candies, num_people) {
     }
     return arr
 };
+
+// findDisappearedNumbers
+const findDisappearedNumbers = function (nums) {
+    let missing = [];
+    let numCounts = {};
+
+    for (let i = 0; i < nums.length; i += 1) {
+        numCounts[nums[i]] = true;
+    }
+
+    for (let i = 1; i <= nums.length; i += 1) {
+        if (!numCounts[i]) { missing.push(i); }
+    }
+
+    return missing;
+};
