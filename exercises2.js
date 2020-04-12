@@ -58,3 +58,22 @@ var balancedStringSplit = function (s) {
     }
     return balanced
 };
+
+// DistributedCandies
+var distributeCandies = function (candies, num_people) {
+    const arr = new Array(num_people).fill(0)
+    let start = 0
+    let first_candy = 1
+    while (candies > 0) {
+        if (candies - first_candy < 0) {
+            arr[start % num_people] += candies
+            candies -= candies
+        } else {
+            arr[start % num_people] += first_candy
+            candies -= first_candy
+            start += 1
+            first_candy += 1
+        }
+    }
+    return arr
+};
