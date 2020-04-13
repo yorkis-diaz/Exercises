@@ -61,5 +61,23 @@ class Array
 
 
         sorted_left + [pivot] + sorted_right
-    end  
+    end
+
+    def bubble_sort(&prc)
+        prc ||= Proc.new {|el1, el2| el1 <=> el2}
+        unsorted = self.dup
+
+        sorted = false
+
+        until sorted
+            sorted = true
+            (0...unsorted.length - 1).each do |idx|
+                if prc.call(unsorted[idx], unsorted[idx+1]) == 1
+                    unsorted[idx], unsorted[idx + 1] = unsorted[idx + 1], unsorted[idx]
+                    sorted = false
+                end
+            end
+        end
+        unsorted
+    end
 end
