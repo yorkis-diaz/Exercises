@@ -45,4 +45,21 @@ class Array
 
         merged_array + left + right
     end
+
+    def my_quick_sort(&prc)
+        return self if self.length <=1
+
+        prc ||= Proc.new {|ele1, ele2| ele1 <=> ele2}
+
+        pivot = self.first
+        rest = self.drop(1)
+        less_than = rest.select {|ele| prc.call(ele, pivot) == -1}
+        greater = rest.select {|ele| prc.call(ele, pivot) != -1}
+
+        sorted_left = less_than.my_quick_sort(&prc)
+        sorted_right = greater.my_quick_sort(&prc)
+
+
+        sorted_left + [pivot] + sorted_right
+    end  
 end
