@@ -15,3 +15,16 @@ MyHashMap.prototype.get = function (key) {
 MyHashMap.prototype.remove = function (key) {
     this.map[key] = null
 };
+
+
+//Intersection of Two Arrays
+
+var intersection = function (nums1, nums2) {
+    let set = new Set(nums1);
+    for (let item of set) {
+        if (!nums2.includes(item)) {
+            set.delete(item);
+        }
+    }
+    return [...set];
+}
