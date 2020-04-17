@@ -36,3 +36,11 @@ var sumOfLeftLeaves = function (node, isLeft = false) {
     if (isLeft && node.left === null && node.right === null) { return node.val }
     return sumOfLeftLeaves(node.left, true) + sumOfLeftLeaves(node.right, false)
 };
+
+//missingNumber
+
+var missingNumber = function (nums) {
+    let n = nums.length + 1;
+    let sum = nums.reduce((a, b) => a + b);
+    return (n * (n - 1) / 2) - sum;
+};
