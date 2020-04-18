@@ -72,3 +72,19 @@ var romanToInt = function (s) {
     }
     return res;
 };
+
+
+//findTheDifference
+var findTheDifference = function (s, t) {
+    let m = new Map();
+    s.split("").forEach(x => {
+        if (!m.has(x)) m.set(x, 1);
+        else m.set(x, m.get(x) + 1);
+    });
+    for (let y of t) {
+        if (!m.has(y)) return y; // if added letter is not part of s
+        else m.set(y, m.get(y) - 1);
+
+        if (m.get(y) < 0) return y; // if added letter is part of s
+    }
+};
