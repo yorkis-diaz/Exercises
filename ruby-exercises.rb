@@ -98,3 +98,16 @@ class Array
         self
     end
 end
+
+# anagram
+
+
+def char_hash(str)
+    count = Hash.new(0)
+    str.each_char { |char| count[char] += 1 }
+    count
+end
+
+def anagrams(str_1, str_2)
+    char_hash(str_1) == char_hash(str_2)
+end
