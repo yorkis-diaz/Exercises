@@ -113,3 +113,25 @@ def anagrams(str_1, str_2)
 end
 
 # mys
+class Array
+    def my_each(&prc)
+        i = 0
+        while i < self.length
+            prc.call(self[i])
+            i+=1
+        end
+        self
+    end
+
+    # My Select
+
+    # Now extend the Array class to include my_select that 
+    # takes a block and returns a new array containing only elements 
+    # that satisfy the block. Use your my_each method!
+
+    def my_select(&prc)
+        selected = []
+        self.my_each {|ele| new_arr << n if prc.call(ele)}
+        new_arr
+    end
+end
