@@ -111,3 +111,5 @@ end
 def anagrams(str_1, str_2)
     char_hash(str_1) == char_hash(str_2)
 end
+
+# mys
