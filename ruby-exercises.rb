@@ -134,4 +134,10 @@ class Array
         self.my_each {|ele| new_arr << n if prc.call(ele)}
         new_arr
     end
+
+    def my_reject(&prc)
+        rejected = []
+        self.my_each {|ele| rejected << ele unless prc.call(ele)}
+        rejected
+    end
 end
