@@ -140,4 +140,9 @@ class Array
         self.my_each {|ele| rejected << ele unless prc.call(ele)}
         rejected
     end
+
+    def my_any?(&prc)
+        self.my_each {|ele| return true if (prc.call(ele))}
+        false
+    end
 end
