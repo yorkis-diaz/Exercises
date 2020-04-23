@@ -145,4 +145,30 @@ class Array
         self.my_each {|ele| return true if (prc.call(ele))}
         false
     end
+
+    def my_all?(&prc)
+        self.my_each {|ele| return false unless prc.call(ele)}
+        true
+    end
+
+
+    # my_flatten should return all elements of the array into a new, one-dimensional 
+    # array. Hint: use recursion!
+
+    def my_flatten #[1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten
+        # return [self] if self.is_a?(Array)
+        # return self if self.length == 1
+
+        flattened = []
+        self.my_each do |sub|
+            # debugger
+            if sub.is_a?(Array)
+                # debugger
+                flattened += sub.my_flatten
+            else #return base case 
+                flattened << sub
+            end
+        end
+        flattened
+    end
 end
