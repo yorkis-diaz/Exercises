@@ -171,4 +171,14 @@ class Array
         end
         flattened
     end
+
+    def my_zip(*args)
+        zipped = Array.new(length) {Array.new}
+
+        0.upto(length-1) do |i|
+            zipped[i] << self[i]
+            args.my_each {|arg| zipped[i] << arg[i]}
+        end
+        zipped
+    end
 end
