@@ -181,4 +181,19 @@ class Array
         end
         zipped
     end
+
+    def my_rotate(default = 1)
+        rotated = []
+        p num = (default % self.length)
+
+        self.my_each {|ele| rotated << ele}
+
+        num.times do 
+            first = rotated.shift
+            rotated << first
+        end
+
+        rotated
+    end
+
 end
