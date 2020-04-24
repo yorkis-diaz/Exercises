@@ -196,4 +196,21 @@ class Array
         rotated
     end
 
+    def my_join(separator = "")
+        joined = ""
+
+        (0).upto(self.length-1) do |i|
+            joined += self[i]
+            joined += separator unless i == (self.length - 1)
+        end
+        joined
+    end
+
+    def my_reverse
+        reversed = []
+        (self.length-1).downto(0) do |i|
+            reversed << self[i]
+        end
+        reversed
+    end
 end
