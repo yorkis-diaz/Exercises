@@ -4,3 +4,8 @@
 
 let num1 = [0, 1, 2, 3];
 num1.splice(1, 0, 4);
+
+//The slice() method returns the selected elements in an array, as a new array object.
+
+let num2 = [0, 1, 2, 3];
+num2.slice(0, 2);
