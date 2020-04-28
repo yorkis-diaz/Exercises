@@ -214,3 +214,12 @@ class Array
         reversed
     end
 end
+
+
+def fibs(n)
+  return [0, 1].take(n) if n <= 2
+
+  prev_fibs = fibs(n - 1)
+  last_num = (prev_fibs[-1] + prev_fibs[-2])
+  prev_fibs << last_num
+end
