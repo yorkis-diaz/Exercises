@@ -232,3 +232,22 @@ def range_iterative(start, end_num)
     (start...end_num).each {|num|results <<num}
     results
 end
+
+
+# exponent recursive
+
+def exponent_1(base, pow)
+    return 1 if pow == 0
+    exponent_1(base, pow - 1) * base
+end
+
+def exponent_2(base, pow)
+    return 1 if pow == 0
+
+    if pow.even?
+        exponent_2(base, pow / 2) ** 2
+    else
+        results = exponent_2(base, (pow - 1) / 2) ** 2
+        base * results
+    end
+end
