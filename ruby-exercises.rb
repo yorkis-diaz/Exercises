@@ -223,3 +223,12 @@ def fibs(n)
   last_num = (prev_fibs[-1] + prev_fibs[-2])
   prev_fibs << last_num
 end
+
+
+# rage recursive
+
+def range_iterative(start, end_num)
+    results = []
+    (start...end_num).each {|num|results <<num}
+    results
+end
