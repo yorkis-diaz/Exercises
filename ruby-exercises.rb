@@ -251,3 +251,13 @@ def exponent_2(base, pow)
         base * results
     end
 end
+
+#quicksort
+
+def quick_sort(arr)
+    return arr if arr.length == 1
+    pivot_arr = [arr.first]
+    left_arr = arr[1..-1].select {|el| el < arr.first}
+    right_arr = arr[1..-1].select {|el| el >= arr.first}
+    quick_sort(left_arr) + pivot_arr + quick_sort(right_arr)
+end
