@@ -261,3 +261,11 @@ def quick_sort(arr)
     right_arr = arr[1..-1].select {|el| el >= arr.first}
     quick_sort(left_arr) + pivot_arr + quick_sort(right_arr)
 end
+
+
+#Powers recursive
+def powers_sum(n)
+    return n if n == 1
+    #4     * 1
+    (n * n) * powers_sum(n-1)
+end
