@@ -286,3 +286,15 @@ class Array
         dupped
     end
 end
+
+# fib iterative
+def fib_iterative(n)
+    fib = [1, 1]
+
+    while fib.length < n
+        next_num = fib[-1] + fib[-2]
+        fib << next_num
+    end
+
+    fib.take(n)
+end
