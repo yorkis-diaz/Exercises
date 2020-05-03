@@ -269,3 +269,20 @@ def powers_sum(n)
     #4     * 1
     (n * n) * powers_sum(n-1)
 end
+
+#deep dup
+
+class Array
+    def deep_dup
+        dupped = []
+
+        self.each do |sub|
+            if sub.is_a?(Array)
+                dupped << sub.deep_dup
+            else
+                dupped << sub
+            end
+        end
+        dupped
+    end
+end
