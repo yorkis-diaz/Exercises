@@ -299,7 +299,7 @@ def fib_iterative(n)
     fib.take(n)
 end
 
-#bsearch
+#bsearch ruby
 
 def bsearch(array, target)
     return nil if array.empty?
@@ -314,5 +314,35 @@ def bsearch(array, target)
         right = array[mid_idx+1..-1]
         found = bsearch(right, target)
         found + (mid_idx + 1) unless found.nil?
+    end
+end
+
+#merge sort ruby
+
+class Array
+    def merge_sort(&prc)
+        return self if self.length <= 1
+        prc ||= Proc.new {|el1, el2| el1 <=> el2}
+        middle = (self.length / 2)
+        left = self.take(middle)
+        right = self.drop(middle)
+
+        left_sorted = left.merge_sort(&prc)
+        right_sorted = right.merge_sort(&prc)
+
+        merge(left_sorted, right_sorted, prc)
+    end
+
+    def merge(left, right, prc)
+        merged = []
+
+        until left.empty? || right.empty?
+            if prc.call(left.first, right.first) == -1
+                merged << left.shift
+            else
+                merged << right.shift
+            end
+        end
+        merged + left + right
     end
 end
