@@ -298,3 +298,21 @@ def fib_iterative(n)
 
     fib.take(n)
 end
+
+#bsearch
+
+def bsearch(array, target)
+    return nil if array.empty?
+    mid_idx = (array.length / 2)
+
+    if (array[mid_idx] <=> target) == 0
+        return mid_idx
+    elsif (array[mid_idx] <=> target) == 1
+        left_sub = array[0...mid_idx]
+        bsearch(left_sub, target)
+    elsif (array[mid_idx] <=> target) == -1
+        right = array[mid_idx+1..-1]
+        found = bsearch(right, target)
+        found + (mid_idx + 1) unless found.nil?
+    end
+end
