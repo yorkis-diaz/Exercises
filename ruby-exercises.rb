@@ -346,3 +346,24 @@ class Array
         merged + left + right
     end
 end
+
+
+#my_inject /prc
+
+
+class Array
+    def my_inject_prc(accumulator = nil, &prc)
+        i = 0
+    
+        if accumulator.nil?
+            accumulator = self.first
+            i += 1
+        end
+
+        while i < self.length
+            accumulator = prc.call(accumulator, self[i])
+            i +=1
+        end
+        accumulator
+    end
+end
