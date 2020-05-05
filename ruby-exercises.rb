@@ -367,3 +367,20 @@ class Array
         accumulator
     end
 end
+
+class Array
+    def my_inject(accumulator = nil)
+        i = 0
+    
+        if accumulator.nil?
+            accumulator = self.first
+            i += 1
+        end
+
+        while i < self.length
+            accumulator += self[i]
+            i +=1
+        end
+        accumulator
+    end
+end
