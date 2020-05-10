@@ -27,3 +27,36 @@ function baseConverter(n, b) {
 
     return baseConverter(Math.floor(n / b), b) + digits[n % b];
 }
+
+//bubblesort
+
+const defaultCallback = (num1, num2) => {
+    if (num1 < num2) {
+        return -1;
+    } else if (num1 === num2) {
+        return 0;
+    } else {
+        return 1;
+    }
+};
+
+Array.prototype.bubbleSort = function (callback) {
+    if (typeof callback !== "function") {
+        callback = defaultCallback;
+    }
+
+    let resultArr = this.slice();
+    let sorted = false;
+    while (!sorted) {
+        sorted = true;
+        for (let i = 1, n = resultArr.length; i < n; i++) {
+            if (callback(resultArr[i - 1], resultArr[i]) === 1) {
+                sorted = false;
+                let swap = resultArr[i - 1];
+                resultArr[i - 1] = resultArr[i];
+                resultArr[i] = swap;
+            }
+        }
+    }
+    return resultArr;
+};
