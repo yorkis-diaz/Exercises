@@ -79,3 +79,9 @@ function caesarCipher(str, shift) {
 
     return encoded;
 }
+
+//deepdup
+
+function deepDup(arr) {
+    return arr.map(el => el instanceof Array ? deepDup(el) : el);
+}
