@@ -85,3 +85,9 @@ function caesarCipher(str, shift) {
 function deepDup(arr) {
     return arr.map(el => el instanceof Array ? deepDup(el) : el);
 }
+
+//doubler
+
+function doubler(array) {
+    return array.map(el => el * 2);
+}
