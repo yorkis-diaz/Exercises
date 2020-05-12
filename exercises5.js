@@ -91,3 +91,13 @@ function deepDup(arr) {
 function doubler(array) {
     return array.map(el => el * 2);
 }
+
+//recursive factorial
+
+function factorialsRec(num) {
+    if (num === 1) return [1];
+
+    const facts = factorialsRec(num - 1);
+    facts.push(facts[facts.length - 1] * (num - 1));
+    return facts;
+}
