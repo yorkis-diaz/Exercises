@@ -108,3 +108,9 @@ function factors(num) {
     const facts = Array.from(Array(num)).map((el, idx) => idx + 1);
     return facts.filter(el => num % el === 0);
 }
+
+//firstEvenNums
+function firstEvenNumbersSum(n) {
+    if (n === 1) return 2;
+    return 2 * n + firstEvenNumbersSum(n - 1);
+}
