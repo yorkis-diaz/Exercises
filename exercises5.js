@@ -109,7 +109,7 @@ function factors(num) {
     return facts.filter(el => num % el === 0);
 }
 
-//firstEvenNums
+//firstEvenNumbersSum
 function firstEvenNumbersSum(n) {
     if (n === 1) return 2;
     return 2 * n + firstEvenNumbersSum(n - 1);
