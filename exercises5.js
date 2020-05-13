@@ -101,3 +101,10 @@ function factorialsRec(num) {
     facts.push(facts[facts.length - 1] * (num - 1));
     return facts;
 }
+
+// Factors
+
+function factors(num) {
+    const facts = Array.from(Array(num)).map((el, idx) => idx + 1);
+    return facts.filter(el => num % el === 0);
+}
