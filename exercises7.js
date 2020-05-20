@@ -20,3 +20,17 @@ Function.prototype.myBind = function (context, ...bindArgs) {
 Function.prototype.myCall = function (context, ...args) {
     return this.bind(context, ...args)();
 };
+
+//mycurry
+Function.prototype.myCurry = function (numArgs) {
+    let nums = [];
+    let fcn = this;
+    return function _myCurry(el) {
+        nums.push(el);
+        if (nums.length < numArgs) {
+            return _myCurry;
+        } else {
+            return fcn(...nums);
+        }
+    };
+};
