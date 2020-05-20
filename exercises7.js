@@ -34,3 +34,11 @@ Function.prototype.myCurry = function (numArgs) {
         }
     };
 };
+
+//myeach
+
+Array.prototype.myEach = function (func) {
+    for (let i = 0; i < this.length; i++) {
+        func(this[i]);
+    }
+};
