@@ -76,3 +76,19 @@ function myFind(array, callback) {
         }
     }
 }
+
+//myflatten
+
+Array.prototype.myFlatten = function () {
+    let flattened = [];
+
+    this.forEach((el) => {
+        if (el instanceof Array) {
+            flattened = flattened.concat(el.myFlatten());
+        } else {
+            flattened.push(el);
+        }
+    });
+
+    return flattened;
+};
