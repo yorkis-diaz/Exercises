@@ -42,3 +42,15 @@ Array.prototype.myEach = function (func) {
         func(this[i]);
     }
 };
+
+//myevery
+
+Array.prototype.myEvery = function (callback) {
+    let every = true
+
+    this.myEach(el => {
+        if (!callback(el)) every = false;
+    });
+
+    return every;
+};
