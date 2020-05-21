@@ -54,3 +54,16 @@ Array.prototype.myEvery = function (callback) {
 
     return every;
 };
+
+// myfilter
+
+
+Array.prototype.myFilter = function (callback) {
+    const result = [];
+
+    this.myEach((el) => {
+        if (callback(el)) result.push(el)
+    });
+
+    return result;
+};
