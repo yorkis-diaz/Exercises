@@ -105,3 +105,18 @@ Array.prototype.myJoin = function (separator = '') {
 
     return newString;
 };
+
+//myreduce
+
+Array.prototype.myReduce = function (callback, acc) {
+    const array = this.slice();
+    if (typeof acc === 'undefined') {
+        acc = array.shift();
+    }
+
+    array.myEach(el => {
+        acc = callback(acc, el);
+    });
+
+    return acc;
+};
