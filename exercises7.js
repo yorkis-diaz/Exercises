@@ -120,3 +120,16 @@ Array.prototype.myReduce = function (callback, acc) {
 
     return acc;
 };
+
+//myreject
+Array.prototype.myReject = function (callback) {
+    const selection = [];
+
+    this.myEach(el => {
+        if (!callback(el)) {
+            selection.push(el);
+        }
+    });
+
+    return selection;
+};
