@@ -133,3 +133,14 @@ Array.prototype.myReject = function (callback) {
 
     return selection;
 };
+
+//myReverse
+
+function myReverse(array) {
+    const result = [];
+    for (let i = 1; i < array.length + 1; i++) {
+        result[i - 1] = array[array.length - i];
+    }
+
+    return result;
+}
