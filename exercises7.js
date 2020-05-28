@@ -179,3 +179,15 @@ String.prototype.mySlice = function (start, end) {
     }
     return slice;
 };
+
+//mySome
+
+Array.prototype.mySome = function (callback) {
+    let some = false;
+
+    this.myEach(el => {
+        if (callback(el)) some = true;
+    });
+
+    return some;
+};
