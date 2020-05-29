@@ -231,3 +231,29 @@ function pigLatinify(sentence) {
 
     return words.map(word => translateWord(word)).join(' ');
 }
+
+//prime factorization
+
+function primeFactorization(num) {
+    if (num === 1) return [];
+
+    let i = 2;
+
+    while (!(isPrime(i) && num % i === 0)) {
+        i++;
+    }
+
+    return [i].concat(primeFactorization(num / i));
+}
+
+function isPrime(num) {
+    if (num < 2) return false;
+    let i = 2;
+
+    while (i < num) {
+        if (num % i === 0) return false;
+        i++;
+    }
+
+    return true;
+}
