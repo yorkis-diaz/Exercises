@@ -317,3 +317,10 @@ String.prototype.realWordsInString = function (dictionary) {
 
     return realWords.sort();
 };
+
+//recSum
+
+function recSum(nums) {
+    if (!nums.length) return 0;
+    return nums[0] + recSum(nums.splice(1));
+}
