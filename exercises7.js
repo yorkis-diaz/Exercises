@@ -366,3 +366,20 @@ String.prototype.symmetricSubstrings = function () {
 
     return symmetric.sort();
 };
+
+// titleize
+
+function titleize(title) {
+    const littleWords = ['a', 'and', 'of', 'over', 'the'];
+
+    const words = title.split(' ');
+    const titleizedWords = words.map((word, idx) => {
+        if (idx !== 0 && littleWords.indexOf(word) >= 0) {
+            return word.toLowerCase();
+        } else {
+            return word.slice(0, 1).toUpperCase() + word.slice(1);
+        }
+    });
+
+    return titleizedWords.join(' ');
+}
