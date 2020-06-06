@@ -383,3 +383,18 @@ function titleize(title) {
 
     return titleizedWords.join(' ');
 }
+
+//transpose
+function transpose(arr) {
+    const transposedArr = [];
+
+    for (var col = 0; col < arr[0].length; col++) {
+        const transposedRow = [];
+        for (var row = 0; row < arr.length; row++) {
+            transposedRow.push(arr[row][col]);
+        }
+        transposedArr.push(transposedRow);
+    }
+    return transposedArr;
+}
+
