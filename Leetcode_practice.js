@@ -18,4 +18,18 @@ const multiply = (num1, num2) => {
     return str.reverse().join("");
 }
 
-console.log(multiply("123456789", "987654321"))
+// console.log(multiply("123456789", "987654321"))
+
+
+var twoCitySchedCost = function (costs) {
+    console.log(costs)
+    costs.sort((x, y) => (x[0] - x[1]) - (y[0] - y[1]));
+    const mid = costs.length / 2;
+    console.log(costs)
+
+    return costs.reduce((acc, cur, i) => {
+        if (i < mid) return acc + cur[0];
+        else return acc + cur[1];
+    }, 0)
+};
+
