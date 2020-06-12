@@ -103,3 +103,18 @@ var addDigits = function (num) {
     }
     return remaining
 };
+
+//happy number 
+var isHappy = function (n) {
+
+    const found = new Set();
+
+    while (n !== 1) {
+        n = `${n}`.split("").reduce((acc, num) => {
+            return acc += Math.pow(num, 2)
+        }, 0);
+        if (found.has(n)) break;
+        found.add(n);
+    }
+    return n === 1
+};
