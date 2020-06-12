@@ -138,3 +138,19 @@ var isHappy = function (n) {
     }
     return true
 };
+
+//tribonacci
+
+var tribonacci = function (n) {
+    const sequence = [0, 1, 1]
+    if (n <= 2) return sequence[n]
+
+    while (sequence.length <= n) {
+        const seqLength = sequence.length
+        let first = sequence[seqLength - 1]
+        let second = sequence[seqLength - 2]
+        let third = sequence[seqLength - 3]
+        sequence.push(first + second + third)
+    }
+    return sequence[sequence.length - 1]
+};
