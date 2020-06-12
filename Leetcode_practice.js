@@ -118,3 +118,23 @@ var isHappy = function (n) {
     }
     return n === 1
 };
+
+//isHappy version 2
+
+var isHappy = function (n) {
+
+    const found = new Set();
+
+    while (n !== 1) {
+        if (found.has(n)) return false
+        found.add(n)
+        let remainder = 0
+        while (n > 0) {
+            remainder += Math.pow((n % 10), 2)
+            n = Math.floor(n /= 10)
+        }
+        n = remainder
+        remainder = 0
+    }
+    return true
+};
