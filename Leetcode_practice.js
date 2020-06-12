@@ -154,3 +154,26 @@ var tribonacci = function (n) {
     }
     return sequence[sequence.length - 1]
 };
+
+//tribonacci memoized
+
+var tribonacci = function (n, memo = {}) {
+    if (memo[n]) return memo[n]
+    if (n === 0) return 0;
+    if (n === 1 || n === 2) return 1
+
+    return memo[n] = tribonacci((n - 1), memo) + tribonacci((n - 2), memo) + tribonacci((n - 3), memo)
+};
+
+//shuffled
+
+var shuffle = function (nums, n) {
+    const shuffled = []
+
+    for (let i = 0; i < n; i++) {
+        shuffled.push(nums[i])
+        shuffled.push(nums[i + n])
+    }
+
+    return shuffled
+};
