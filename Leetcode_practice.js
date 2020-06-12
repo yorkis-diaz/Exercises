@@ -85,3 +85,21 @@ var maxProfit2 = function (prices) {
     }
     return maxProfit;
 };
+
+
+// addDigits digitalroot
+
+var addDigits = function (num) {
+    let remaining = 0
+
+    while (num > 0) {
+        remaining += num % 10
+        num = Math.floor(num / 10)
+
+        if (num === 0 && remaining > 9) {
+            num = remaining
+            remaining = 0
+        }
+    }
+    return remaining
+};
