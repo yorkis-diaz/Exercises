@@ -20,7 +20,7 @@ const multiply = (num1, num2) => {
 
 // console.log(multiply("123456789", "987654321"))
 
-
+//twoCitySchedCost
 var twoCitySchedCost = function (costs) {
     console.log(costs)
     costs.sort((x, y) => (x[0] - x[1]) - (y[0] - y[1]));
@@ -33,3 +33,55 @@ var twoCitySchedCost = function (costs) {
     }, 0)
 };
 
+// isAnagram
+
+var isAnagram = function (s, t) {
+    const count = {}
+    s.split("").forEach((letter) => {
+        if (!count[letter]) count[letter] = 0;
+        count[letter]++
+    })
+    t.split("").forEach((letter) => {
+        if (!count[letter]) count[letter] = 0;
+        count[letter]--
+    })
+    return Object.values(count).every(letter => letter === 0)
+};
+
+// maxProfit
+
+var maxProfit = function (prices) {
+    let buyPrice;
+    let previousDay;
+    let maxProfit = 0;
+
+    for (let i = 0; i < prices.length; i++) {
+        if (i === 0) {
+            buyPrice = prices[i]
+            previousDay = prices[i]
+        } else {
+            if (prices[i] > buyPrice && prices[i] > previousDay) {
+                if (i === prices.length - 1) {
+                    maxProfit += prices[i] - buyPrice
+                }
+                previousDay = prices[i]
+            } else {
+                maxProfit += previousDay - buyPrice
+                buyPrice = prices[i]
+                previousDay = prices[i]
+            }
+        }
+    }
+    return maxProfit
+};
+
+var maxProfit2 = function (prices) {
+    let maxProfit = 0;
+    for (let i = 0; i < prices.length; i++) {
+        j = i + 1;
+        if (prices[i] < prices[j]) {
+            maxProfit += prices[j] - prices[i];
+        }
+    }
+    return maxProfit;
+};
