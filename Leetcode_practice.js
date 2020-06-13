@@ -205,7 +205,7 @@ var kidsWithCandies = function (candies, extraCandies) {
 
 };
 
-//groupThePeople
+//groupThePeople Leetcode 1282
 
 var groupThePeople = function (groupSizes) {
     const newMap = {};
