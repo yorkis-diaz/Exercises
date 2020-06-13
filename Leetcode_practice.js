@@ -204,3 +204,26 @@ var kidsWithCandies = function (candies, extraCandies) {
     })
 
 };
+
+//groupThePeople
+
+var groupThePeople = function (groupSizes) {
+    const newMap = {};
+    const results = []
+    for (let i = 0; i < groupSizes.length; i++) {
+        if (!newMap[groupSizes[i]]) newMap[groupSizes[i]] = []
+        newMap[groupSizes[i]].push(i)
+    }
+
+    for (let key in newMap) {
+        let intKey = parseInt(key)
+        let marker = newMap[key].length / key
+        let current = 0
+        while (marker > 0) {
+            results.push(newMap[key].slice(current, current + intKey))
+            current += intKey
+            marker--
+        }
+    }
+    return results
+};
