@@ -177,3 +177,30 @@ var shuffle = function (nums, n) {
 
     return shuffled
 };
+
+//kids with the greatest candy
+
+var kidsWithCandies = function (candies, extraCandies) {
+    const results = []
+    const maxCandy = Math.max(...candies)
+    for (let i = 0; i < candies.length; i++) {
+        const check = candies[i] + extraCandies >= maxCandy
+        results.push(check)
+
+    }
+    return results
+};
+
+//kids with the greatest candy v2
+
+var kidsWithCandies = function (candies, extraCandies) {
+    const results = []
+    const maxCandy = candies.reduce((acc, candy) => {
+        return candy > acc ? candy : acc
+    })
+
+    return candies.map(candy => {
+        return candy + extraCandies >= maxCandy
+    })
+
+};
