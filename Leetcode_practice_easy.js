@@ -50,3 +50,24 @@ var commonChars = function (A) {
     }
     return results
 };
+
+// 58. Length of Last Word
+
+var lengthOfLastWord = function (s) {
+    let stringArray = s.split(" ")
+    let lastWord = 0;
+
+    for (let i = stringArray.length - 1; i >= 0; i--) {
+        if (stringArray[i].length > 0) {
+            lastWord = stringArray[i].length;
+            break;
+        }
+    }
+    return lastWord
+};
+
+var lengthOfLastWord = function (s) {
+    let stringArray = s.split(" ").filter((word) => word.length > 0)
+
+    return stringArray[stringArray.length - 1] ? stringArray[stringArray.length - 1].length : 0
+};
