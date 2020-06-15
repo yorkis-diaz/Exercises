@@ -71,3 +71,13 @@ var lengthOfLastWord = function (s) {
 
     return stringArray[stringArray.length - 1] ? stringArray[stringArray.length - 1].length : 0
 };
+
+// 633. Sum of square Numbers
+
+var judgeSquareSum = function (c) {
+    for (let i = Math.floor(Math.sqrt(c)); i >= 0; i--) {
+        if (Number.isInteger(Math.sqrt(c - i * i)))
+            return true
+    }
+    return false
+};
