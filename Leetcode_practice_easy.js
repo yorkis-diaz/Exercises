@@ -81,3 +81,19 @@ var judgeSquareSum = function (c) {
     }
     return false
 };
+
+// 367. Valid Perfect Square
+
+var isPerfectSquare = function (num) {
+    if (num === 1) return true;
+    let current = Math.floor(num / 2)
+
+    for (let i = 1; i <= current; i++) {
+        if (i * i === num) return true;
+
+        if (Math.floor(current / 2) * Math.floor(current / 2) > num) {
+            current = Math.floor(current / 2)
+        }
+    }
+    return false;
+};
