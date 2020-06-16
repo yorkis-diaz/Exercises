@@ -97,3 +97,9 @@ var isPerfectSquare = function (num) {
     }
     return false;
 };
+
+// 69. Sqrt(x)
+
+var mySqrt = function (x) {
+    return Math.trunc(Math.sqrt(x))
+};
