@@ -103,3 +103,28 @@ var isPerfectSquare = function (num) {
 var mySqrt = function (x) {
     return Math.trunc(Math.sqrt(x))
 };
+
+// 204. Count Primes
+
+var countPrimes = function (n) {
+    // /Sieve of Eratosthenes
+
+    const primes = new Array(n).fill(true)
+
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (primes[i]) {
+            for (let j = i * i; j < primes.length; j += i) {
+                if (primes[j]) {
+                    primes[j] = false;
+                }
+            }
+        }
+    }
+
+    let count = 0
+
+    for (let i = 2; i < primes.length; i++) {
+        if (primes[i]) count++
+    }
+    return count
+};
