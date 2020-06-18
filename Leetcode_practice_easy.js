@@ -128,3 +128,12 @@ var countPrimes = function (n) {
     }
     return count
 };
+
+// 686. Repeated String Match
+
+var repeatedStringMatch = function (A, B) {
+    const minNumber = Math.ceil(B.length / A.length)
+    if (A.repeat(minNumber).includes(B)) return minNumber;
+    if (A.repeat(minNumber + 1).includes(B)) return minNumber + 1;
+    return -1;
+};
